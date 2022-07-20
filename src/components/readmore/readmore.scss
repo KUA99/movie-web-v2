@@ -1,0 +1,21 @@
+@use "../../scss/" as *;
+
+.readmore {
+  margin-left: calc($gap-2 + $img-w-6);
+  &-text {
+    font-size: 1.6rem;
+    color: $white;
+    line-height: 2.6rem;
+  }
+
+  &-btn {
+    font-size: 1.6rem;
+    color: $main-color;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

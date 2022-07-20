@@ -1,0 +1,71 @@
+@use "../../scss/" as *;
+
+.footer {
+  width: 100%;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../assets/image/bgimg.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .footer-container {
+    margin: 0 auto;
+    max-width: 60rem;
+
+    .footer-info {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      img {
+        display: block;
+        width: 30rem;
+        margin: 0 auto;
+        object-fit: cover;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        width: 20rem;
+      }
+
+      p {
+        font-size: 1.6rem;
+        color: $white;
+        text-align: center;
+      }
+    }
+
+    .footer-app {
+      margin-top: 2rem;
+
+      h2 {
+        font-size: 2rem;
+        color: $white;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.6rem;
+        color: $white;
+        text-align: center;
+      }
+
+      .footer-download-app {
+        max-width: 60rem;
+        text-align: center;
+        margin-top: 1rem;
+        padding-bottom: 2rem;
+
+        img {
+          width: 20rem;
+          display: inline-block;
+          object-fit: cover;
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

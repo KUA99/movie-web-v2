@@ -1,0 +1,85 @@
+@use "../../scss/" as *;
+
+.moviecard {
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: $img-border-radius;
+  padding-top: 140%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include overlay;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: $img-border-radius;
+  }
+
+  &-btn {
+    position: absolute;
+    color: $black;
+    background-color: $main-color;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    padding: 0.3rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    @include flex(center, center);
+
+    &-icon {
+      font-size: 4.6rem !important;
+    }
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+
+  &:hover &-btn {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.card-title {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  color: $white;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.card-date {
+  color: $white;
+  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: $main-color;
+  }
+}

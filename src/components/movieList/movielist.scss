@@ -1,0 +1,36 @@
+@use "../../scss/" as *;
+.movielist {
+  margin-bottom: 8rem;
+  &-header {
+    @include flex(center, space-between);
+    margin-bottom: 1rem;
+
+    &-title {
+      font-size: 2.6rem;
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+
+    &-btn {
+      font-size: 1.4rem;
+      color: $black;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      background-color: $main-color;
+      border-radius: 4rem;
+      transition: all 0.2s linear;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &-content {
+    position: relative;
+  }
+}

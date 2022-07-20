@@ -1,0 +1,133 @@
+@use "../../scss/" as *;
+
+.moviegrid {
+  margin-top: 10rem;
+
+  &-header {
+    @include flex(center, space-between);
+
+    @include mobile {
+      flex-direction: column;
+      row-gap: 1rem;
+    }
+
+    &-title {
+      font-size: 2.6rem;
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+
+    &-type {
+      @include flex(center, unset);
+      &-btn {
+        font-size: 1.6rem;
+        color: $white;
+        text-transform: capitalize;
+        outline: none;
+        border: 0.1rem solid $main-color;
+        padding: 1rem 2rem;
+        background-color: $bg-btn-color;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+          color: $black;
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+
+  &-content {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    gap: 2rem;
+  }
+
+  &-page {
+    @include flex(center, center);
+    margin: 2rem 0;
+
+    &-btn {
+      outline: none;
+      background-color: $main-color;
+      color: $black;
+      padding: 1rem;
+      border-radius: 1rem;
+      @include flex(center, center);
+      cursor: pointer;
+      transition: all 0.3s linear;
+      border: 0.1rem solid transparent;
+
+      &:hover {
+        background-color: $bg-btn-color-2;
+        color: $white;
+        border: 0.1rem solid $main-color;
+      }
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+
+      &-icon {
+        font-size: 2rem !important;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-loading-text {
+    font-size: 1.6rem;
+    color: $white;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 1rem;
+
+    &:before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $main-color;
+      width: 0;
+      overflow: hidden;
+      animation: textLoading 3s linear infinite;
+    }
+
+    @keyframes textLoading {
+      0%,
+      10%,
+      100% {
+        width: 0;
+      }
+
+      70%,
+      90% {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

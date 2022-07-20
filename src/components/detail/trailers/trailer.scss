@@ -1,0 +1,17 @@
+@use "../../../scss/" as *;
+
+.trailer-content {
+  margin-bottom: 4rem;
+  &-title {
+    font-size: 1.6rem;
+    color: $white;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+  }
+
+  &-video {
+    width: 100%;
+    height: 60rem;
+  }
+}

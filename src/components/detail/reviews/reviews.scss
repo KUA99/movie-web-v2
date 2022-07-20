@@ -1,0 +1,43 @@
+@use "../../../scss/" as *;
+
+.review {
+  &-wrapper {
+    margin-bottom: 4rem;
+  }
+
+  &-header {
+    @include flex(center, unset);
+    gap: $gap-2;
+    margin-bottom: 0.6rem;
+
+    &-avatar {
+      img {
+        width: $img-w-6;
+        height: $img-h-6;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    &-content {
+      @include flex(center, unset);
+      gap: 1rem;
+
+      &-name {
+        font-size: 2rem;
+        color: $white;
+        font-weight: 600;
+      }
+
+      &-rated {
+        font-size: 1.4rem;
+        color: $black;
+        background-color: $main-color;
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: $img-border-radius;
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "../../scss/" as *;
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include overlay;
+  z-index: 99999;
+  @include flex(center, center);
+  overflow: hidden;
+  transition: all 0.3s linear;
+  transform: translateY(-20rem);
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &-content {
+    @include flex(center, center);
+
+    position: relative;
+    padding: 3rem;
+    background-color: $bg-btn-color-3;
+    width: 70%;
+    height: 70%;
+
+    @include mobile {
+      width: 100%;
+      height: 50%;
+      top: -10%;
+    }
+
+    &-close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+
+      &-icon {
+        color: $main-color;
+        font-weight: 600;
+        font-size: 3rem !important;
+        transition: all 0.3s linear;
+
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+
+    iframe {
+      border: 0.1rem solid $white;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

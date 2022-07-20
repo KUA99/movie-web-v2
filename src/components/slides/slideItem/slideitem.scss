@@ -1,0 +1,161 @@
+@use "../../../scss/" as *;
+
+.slide {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 9rem 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(to top, $bg-btn-color, rgba($black, 0.2));
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-wrapper {
+    @include flex(center, center);
+    gap: 2rem;
+    position: relative;
+
+    .slide-content {
+      width: 55%;
+
+      @include mobile {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      &-name {
+        color: $white;
+        font-size: 6rem;
+        line-height: 7.2rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+      }
+
+      &-overview {
+        color: $white;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 2.6rem;
+        margin-bottom: 3rem;
+      }
+
+      &-info {
+        @include flex(center, unset);
+        gap: 2rem;
+        margin-bottom: 3rem;
+
+        .rating {
+          @include flex(center, unset);
+          gap: 1rem;
+          font-size: 2rem;
+          font-weight: 600;
+        }
+
+        .release-time {
+          @include flex(center, unset);
+          gap: 1rem;
+          font-size: 2rem;
+          font-weight: 600;
+
+          &-icon {
+            font-size: 2rem;
+            color: $main-color;
+          }
+        }
+      }
+
+      &-play {
+        background-color: $bg-btn-color;
+        border: 0.2rem solid $main-color;
+        border-radius: 5rem;
+        padding: 1rem 2rem;
+        transition: all 0.3s linear;
+        @include flex(center, unset);
+        width: fit-content;
+        color: $white;
+
+        span {
+          margin-left: 1rem;
+          letter-spacing: 0.1rem;
+          font-size: 1.6rem;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        &-icon {
+          font-size: 2.4rem;
+        }
+
+        &:hover {
+          background-color: $main-color;
+          color: $black;
+        }
+      }
+
+      &-name,
+      &-overview,
+      &-info,
+      &-play {
+        opacity: 0;
+        transform: translateY(-10rem);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+    }
+
+    .slide-poster {
+      img {
+        width: 30rem;
+        border-radius: 2rem;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.7s ease;
+      }
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &.active > &-wrapper > &-content {
+    .slide-content-name,
+    .slide-content-overview,
+    .slide-content-info,
+    .slide-content-play {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-content-name {
+      transition-delay: 0.2s, 0.2s;
+    }
+
+    .slide-content-overview {
+      transition-delay: 0.4s, 0.4s;
+    }
+
+    .slide-content-info {
+      transition-delay: 0.6s, 0.6s;
+    }
+
+    .slide-content-play {
+      transition-delay: 0.8s, 0.8s;
+    }
+  }
+
+  &.active > &-wrapper > &-poster {
+    img {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}

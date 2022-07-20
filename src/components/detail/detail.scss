@@ -1,0 +1,188 @@
+@use "../../scss/" as *;
+
+.detail {
+  &-banner {
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    position: relative;
+    height: 60vh;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent 0, $bg-color);
+    }
+  }
+
+  &-content {
+    max-width: 100rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 2rem;
+    margin-top: -26rem;
+    position: relative;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      margin-top: -100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .detail-poster {
+      img {
+        border-radius: $img-border-radius;
+      }
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .detail-info {
+      &-title {
+        font-size: 5rem;
+        font-weight: 700;
+        line-height: 7rem;
+        color: $white;
+        margin-bottom: 2rem;
+      }
+
+      &-genres {
+        @include flex(center, unset);
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        &-item {
+          font-size: 1.3rem;
+          color: $black;
+          background-color: $main-color;
+          padding: 0.6rem 1rem;
+          font-weight: 600;
+          border-radius: $img-border-radius;
+        }
+      }
+
+      &-overview {
+        font-size: 1.6rem;
+        color: $white;
+        font-weight: 500;
+        line-height: 2.2rem;
+        margin-bottom: 2rem;
+      }
+
+      &-meta {
+        @include flex(center, unset);
+        gap: 4rem;
+        margin-bottom: 2rem;
+
+        &-item {
+          @include flex(center, unset);
+          gap: 1rem;
+
+          .detail-info-icon {
+            font-size: 1.6rem;
+            color: $main-color;
+          }
+
+          span {
+            color: $white;
+            font-size: 1.6rem;
+            font-weight: 600;
+          }
+        }
+      }
+
+      &-play-wrapper {
+        @include flex(center, unset);
+        gap: 2rem;
+      }
+
+      &-play {
+        @include flex(center, unset);
+        gap: 1rem;
+        background-color: $bg-btn-color-3;
+        width: fit-content;
+        border: 0.2rem solid $main-color;
+        border-radius: $img-border-radius;
+        padding: 1rem 2rem;
+        transition: all 0.3s ease;
+
+        &-icon {
+          font-size: 2.4rem;
+        }
+
+        span {
+          font-size: 1.6rem;
+          color: $white;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        &:hover {
+          background-color: $main-color;
+          color: $black;
+
+          span {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+
+  &-casts {
+    margin-top: 4rem;
+  }
+
+  &-tab {
+    margin-top: 4rem;
+
+    .react-tabs__tab-list {
+      @include flex(center, unset);
+      gap: 2rem;
+
+      .react-tabs__tab {
+        font-size: 2.6rem;
+        color: $white;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        transition: all 0.2s linear;
+
+        &:hover {
+          color: $main-color;
+        }
+
+        &.react-tabs__tab--selected {
+          color: $main-color;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &-similar {
+    margin-top: 4rem;
+
+    &-title {
+      font-size: 2.6rem;
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+  }
+}
+
+.toast-background {
+  background-color: black;
+}

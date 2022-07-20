@@ -1,0 +1,14 @@
+@use "../../scss/" as *;
+
+.loading {
+  .MuiCircularProgress-colorPrimary {
+    color: $main-color !important;
+  }
+
+  .MuiCircularProgress-root {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

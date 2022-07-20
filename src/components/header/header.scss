@@ -1,0 +1,431 @@
+@use "../../scss/" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 2rem 0;
+  transition: all 0.3s linear;
+
+  .header-nav {
+    @include flex(center, flex-start);
+    position: relative;
+
+    @include mobile {
+      justify-content: space-between;
+    }
+
+    .mobile-menu-wrapper {
+      display: none;
+
+      @include mobile {
+        display: block;
+
+        .mobile-menu-icon {
+          color: $white;
+          font-size: 3.6rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .logo {
+      @include mobile {
+        text-align: center;
+      }
+
+      img {
+        vertical-align: middle;
+
+        @include mobile {
+          width: 80%;
+        }
+      }
+    }
+
+    .menu {
+      flex-grow: 1;
+      margin-left: 4rem;
+
+      @include mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: $header-color;
+        margin-left: 0;
+        height: 100%;
+        width: 24rem;
+        z-index: 3;
+        transform: translateX(-60rem);
+        transition: all 0.3s linear;
+      }
+
+      &-close-btn {
+        display: none;
+
+        @include mobile {
+          position: absolute;
+          right: 0;
+          background-color: transparent;
+          display: block;
+
+          .menu-close-icon {
+            font-size: 3.6rem;
+            color: $main-color;
+          }
+        }
+      }
+
+      &-list {
+        @include flex(center, unset);
+
+        @include mobile {
+          flex-direction: column;
+          margin-top: 3rem;
+        }
+
+        .menu-item {
+          position: relative;
+          margin-right: 4rem;
+
+          @include mobile {
+            margin-right: 0;
+            align-self: flex-start;
+            padding: 2rem 0 1rem 1rem;
+            border-bottom: 0.2rem solid $main-color;
+            display: block;
+            width: 100%;
+          }
+
+          &:hover .nav-icon,
+          &:hover a {
+            color: $main-color;
+          }
+
+          &.active {
+            @include mobile {
+              color: $main-color;
+            }
+          }
+
+          &.active::after,
+          &:hover::after {
+            width: 100%;
+            transform: scale(1);
+            opacity: 1;
+
+            @include mobile {
+              width: 0;
+            }
+          }
+
+          &-link {
+            @include flex(center, unset);
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.2s linear;
+
+            .nav-icon {
+              margin-right: 0.6rem;
+              font-size: 1.6rem;
+              transition: all 0.2s linear;
+            }
+          }
+
+          &::after {
+            position: absolute;
+            content: "";
+            bottom: -4;
+            width: 0;
+            height: 0.3rem;
+            background-color: $main-color;
+            transform-origin: center;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s linear;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      display: none;
+
+      @include mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        @include overlay;
+        z-index: 2;
+      }
+    }
+
+    .header-action {
+      @include flex(center, unset);
+
+      .search-icon {
+        font-size: 2.6rem;
+        font-weight: bold;
+        margin-right: 2rem;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+          color: $main-color;
+        }
+      }
+
+      .search-bar {
+        @include flex(center, unset);
+        height: 3.6rem;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: top right;
+        transition: all 0.3s linear;
+        width: 50rem;
+        position: absolute;
+        top: 120%;
+        right: 8%;
+
+        @include mobile {
+          left: 0;
+          right: 0;
+          width: 100%;
+        }
+
+        .search-bar-btn {
+          background-color: $main-color;
+          height: inherit;
+          border-top-left-radius: 0.4rem;
+          border-bottom-left-radius: 0.4rem;
+          padding: 1rem;
+          @include flex(center, center);
+          cursor: pointer;
+          transition: all 0.3s linear;
+
+          &:hover {
+            opacity: 0.6;
+          }
+
+          .search-icon-bar {
+            font-size: 2rem;
+            color: $black;
+            font-weight: bold;
+          }
+        }
+
+        .search-bar-input {
+          position: relative;
+          height: inherit;
+          width: 100%;
+
+          input {
+            font-size: 1.6rem;
+            padding: 0.6rem;
+            color: $black;
+            height: inherit;
+            width: 100%;
+          }
+
+          &::after {
+            position: absolute;
+            content: "";
+            right: 0;
+            height: 100%;
+            background-color: $main-color;
+            width: 0.2rem;
+          }
+        }
+
+        select {
+          height: inherit;
+          background-color: $bg-btn-color-3;
+          color: $main-color;
+          font-weight: bold;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          text-transform: capitalize;
+          font-size: 1.6rem;
+          border-top-right-radius: 0.4rem;
+          border-bottom-right-radius: 0.4rem;
+          padding: 0.4rem;
+          transition: all 0.2s linear;
+          text-align: center;
+
+          &:hover {
+            border: 0.1rem solid $main-color;
+          }
+
+          option {
+            text-transform: capitalize;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 0.6rem;
+          }
+        }
+      }
+
+      .header-btn {
+        position: relative;
+
+        @include mobile {
+          display: none;
+        }
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 0.8rem;
+          width: 6rem;
+          top: 100%;
+          right: 10%;
+        }
+
+        &:hover {
+          .header-user-info {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .header-user {
+          img {
+            border-radius: 50%;
+            width: 4rem;
+            object-fit: cover;
+          }
+        }
+
+        .header-user-info {
+          background-color: $bg-btn-color-3;
+          border-radius: 0.2rem;
+          position: absolute;
+          width: 16rem;
+          right: 0;
+          top: 110%;
+          opacity: 0;
+          transform: scale(0);
+          transform-origin: top right;
+          transition: all 0.3s linear;
+          box-shadow: 0 0 0.2rem $white;
+
+          &-content {
+            padding: 1rem;
+            @include flex(center, unset);
+            gap: 1rem;
+            margin-bottom: 1rem;
+
+            img {
+              object-fit: cover;
+              width: 5rem;
+              border-radius: 50%;
+            }
+
+            span {
+              font-size: 1.4rem;
+              color: $white;
+              text-transform: capitalize;
+              font-weight: 500;
+              -ms-word-break: break-all;
+              word-break: break-all;
+              word-break: break-word;
+            }
+          }
+
+          p {
+            padding: 1rem;
+            text-transform: capitalize;
+            font-size: 1.4rem;
+            color: $white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s linear;
+            border-top: 0.1rem solid $white;
+
+            &:hover {
+              background-color: $white;
+              color: $black;
+            }
+          }
+        }
+
+        button {
+          font-size: 1.6rem;
+          background-color: $bg-btn-color;
+          padding: 1rem 2rem;
+          color: $white;
+          border: 0.2rem solid $main-color;
+          border-radius: 5rem;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-weight: 600;
+          transition: all 0.3s linear;
+          letter-spacing: 0.1rem;
+
+          &:hover {
+            background-color: $main-color;
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-user-menu {
+    display: none;
+    width: 100%;
+
+    @include mobile {
+      display: block;
+    }
+
+    &-item {
+      @include mobile {
+        margin-right: 0;
+        align-self: flex-start;
+        padding: 2rem 0 1rem 1rem;
+        border-bottom: 0.2rem solid $main-color;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .mobile-user-info {
+    display: none;
+
+    @include mobile {
+      @include flex(center, unset);
+      flex-direction: column;
+    }
+
+    img {
+      width: 10rem;
+      height: 10rem;
+      border: 0.2rem solid $white;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    span {
+      font-size: 1.6rem;
+      color: $white;
+      text-transform: capitalize;
+      font-weight: 500;
+      -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+    }
+  }
+}
+
+.scroll {
+  background-color: $header-color;
+}
