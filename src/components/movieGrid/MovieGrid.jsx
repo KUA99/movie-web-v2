@@ -144,8 +144,6 @@ const MovieGrid = (props) => {
     playList,
   ]);
 
-  console.log(list);
-
   return (
     <div className="moviegrid">
       <div className="moviegrid-header">
