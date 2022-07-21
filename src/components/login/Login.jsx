@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./login.scss";
 import googleImg from "../../assets/image/google.png";
@@ -63,7 +64,11 @@ const Login = () => {
         }
         navigate("/");
       } catch (error) {
-        console.log(error);
+        toast.error(
+          <p className="toast-text toast-text-warning">
+            Your email or password is incorrect !
+          </p>
+        );
       }
     }
   };
@@ -91,8 +96,11 @@ const Login = () => {
         }
         navigate("/");
       } catch (error) {
-        console.log(error);
-        alert("This email address is already being used");
+        toast.warning(
+          <p className="toast-text toast-text-warning">
+            This email address is already being used
+          </p>
+        );
       }
     } else {
       console.log("No data founded");
